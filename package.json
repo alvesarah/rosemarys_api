@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/alvesarah/rosemarys_api/issues"
   },
-  "homepage": "https://github.com/alvesarah/rosemarys_api#readme"
+  "homepage": "https://github.com/alvesarah/rosemarys_api#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
