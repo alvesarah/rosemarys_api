@@ -1,0 +1,27 @@
+{
+  "name": "rosemarys_api",
+  "version": "0.0.1",
+  "description": "API do estúdio de tatuagem",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvesarah/rosemarys_api.git"
+  },
+  "keywords": [
+    "API",
+    "tattoo",
+    "piercing",
+    "rosemary",
+    "estudio",
+    "portfolio"
+  ],
+  "author": "Sarah Alves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alvesarah/rosemarys_api/issues"
+  },
+  "homepage": "https://github.com/alvesarah/rosemarys_api#readme"
+}
