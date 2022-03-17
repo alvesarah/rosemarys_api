@@ -4,6 +4,9 @@ API para um estúdio de tatuagem (Entidade Portfolio)
 
 Projeto realizado utilizando o [Node.js](https://nodejs.org/en/) com framework [Express](https://expressjs.com/).
 
+## Objetivo
+Esse projeto tem como objetivo criar uma API RESTful de um Estúdio de tatuagem, onde será possível aplicar as operações CRUD nas entidades `Portfolio`.
+
 ## Pré-Requisitos
 
 * Node.js  v.16.14.0
@@ -33,5 +36,5 @@ npm start
 ```
 
 ## Rotas implementadas
-
- * GET /portfolio 
+#### Portfólio
+ * GET /portfolio
