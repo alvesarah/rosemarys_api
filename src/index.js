@@ -6,7 +6,9 @@ import portfolioController from "./controllers/portfolio-controller.js";
 
 // Importando os midlewares
 import generalMiddleware from "./middleware/general-middleware.js";
-import portfolioMiddleware from "./middleware/portfolio-middleware.js";
+
+// Importando banco de dados
+import bd from "./database/bd.js";
 
 // Instanciando/criando servidor
 const app = express()
@@ -18,10 +20,9 @@ app.use(express.json());
 
 // Chamanda dos Middlewares especificos das rotas
 generalMiddleware(app);
-portfolioMiddleware(app);
 
 // chamando os controller
-portfolioController(app)
+portfolioController(app, bd)
 
 // Abrindo o servidor na porta escolhida
 app.listen(port, ()=>{
