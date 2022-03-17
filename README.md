@@ -41,3 +41,49 @@ npm start
 ## Rotas implementadas
 #### Portfólio
  * GET /portfolio
+    Schema da resposta
+    ```
+    {
+        portfolios: [
+            {
+                "foto": <String>,
+                "descricao": <String>,
+                "servico": <String>,
+                "duracao": <String>,
+                "cliente_id": <String>,
+                "funcionario_id": <String>
+            }
+        ],
+        erro: <Boleano>
+    }
+    ```
+
+    * POST /portfolio
+
+      Schema da requisição
+    ```
+    {
+       "foto": <String>,
+        "descricao": <String>,
+        "servico": <String>,
+        "duracao": <String>,
+        "cliente_id": <String>,
+        "funcionario_id": <String>
+    }
+    ```
+
+    Schema da resposta
+    ```
+    {
+        msg: <String>
+        portfolio: {
+            "foto": <String>,
+            "descricao": <String>,
+            "servico": <String>,
+            "duracao": <String>,
+            "cliente_id": <String>,
+            "funcionario_id": <String>
+        },
+        erro: <Boleano>
+    }
+    ```
