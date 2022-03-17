@@ -4,10 +4,21 @@ import express from "express";
 // importanto os controller
 import portfolioController from "./controllers/portfolio-controller.js";
 
+// Importando os midlewares
+import generalMiddleware from "./middleware/general-middleware.js";
+import portfolioMiddleware from "./middleware/portfolio-middleware.js";
+
 // Instanciando/criando servidor
 const app = express()
 // Escolhendo a porta
 const port = 3000
+
+// Middleware necessário para fazer o parser do JSON recebido do body em objeto
+app.use(express.json());
+
+// Chamanda dos Middlewares especificos das rotas
+generalMiddleware(app);
+portfolioMiddleware(app);
 
 // chamando os controller
 portfolioController(app)

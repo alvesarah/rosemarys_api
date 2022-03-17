@@ -11,13 +11,14 @@ const portfolioController = (app)=>{
     })
 
     app.post('/portfolio',(req, res)=>{
+        const body = req.body;
         /* 
             alguma funcao que insira coisas
         */
 
         // Resposta com o retorno do processo
         res.json({
-            "msg": "Usuario inserido com sucesso"
+            "msg": "Usuário inserido com sucesso"
         })
     })
 }
