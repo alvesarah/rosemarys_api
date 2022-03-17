@@ -1,18 +1,18 @@
 // Importando o framework
 import express from "express";
 
-// Importanto controller
-import portfolioController from "./controllers/portfolio-controller";
+// importanto os controller
+import portfolioController from "./controllers/portfolio-controller.js";
 
 // Instanciando/criando servidor
-const app = express();
-// Escolhendo porta
-const port = 3000;
+const app = express()
+// Escolhendo a porta
+const port = 3000
 
-// Chamando o controller
-portfolioController(app);
+// chamando os controller
+portfolioController(app)
 
 // Abrindo o servidor na porta escolhida
 app.listen(port, ()=>{
-    console.log(`Servidor aberto na http://localhost:${port}`);
-});
+    console.log(`Servidor aberto na http://localhost:${port}/`)
+})
