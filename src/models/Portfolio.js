@@ -2,11 +2,10 @@
 // Validando as entradas
 
 class Portfolio{
-    constructor(portfolioId, foto, descricao, servico, duracao, clienteId, funcionarioId){
-        this.portfolioId = portfolioId;
+    constructor(id, foto, descricao, duracao, clienteId, funcionarioId){
+        this.id = id;
         this.foto = foto;
         this.descricao = descricao;
-        this.servico = servico;
         this.duracao = duracao;
         this.clienteId = clienteId;
         this.funcionarioId = funcionarioId;
