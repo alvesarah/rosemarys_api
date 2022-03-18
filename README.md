@@ -46,12 +46,13 @@ npm start
     {
         portfolios: [
             {
+                "portfolioId": <String>,
                 "foto": <String>,
                 "descricao": <String>,
                 "servico": <String>,
                 "duracao": <String>,
-                "cliente_id": <String>,
-                "funcionario_id": <String>
+                "clienteId": <String>,
+                "funcionarioId": <String>
             }
         ],
         erro: <Boleano>
@@ -60,15 +61,16 @@ npm start
 
     * POST /portfolio
 
-      Schema da requisição
+    Schema da requisição
     ```
     {
-       "foto": <String>,
+       "portfolioId": <String>,
+        "foto": <String>,
         "descricao": <String>,
         "servico": <String>,
         "duracao": <String>,
-        "cliente_id": <String>,
-        "funcionario_id": <String>
+        "clienteId": <String>,
+        "funcionarioId": <String>
     }
     ```
 
@@ -77,13 +79,57 @@ npm start
     {
         msg: <String>
         portfolio: {
+            "portfolioId": <String>,
             "foto": <String>,
             "descricao": <String>,
             "servico": <String>,
             "duracao": <String>,
-            "cliente_id": <String>,
-            "funcionario_id": <String>
+            "clienteId": <String>,
+            "funcionarioId": <String>
         },
         erro: <Boleano>
     }
     ```
+
+    * **PUT /portfolio/portfolioId/{id}**
+    
+    Schema da requisição
+    ```
+
+    {
+        "portfolioId": <String>,
+        "foto": <String>,
+        "descricao": <String>,
+        "servico": <String>,
+        "duracao": <String>,
+        "clienteId": <String>,
+        "funcionarioId": <String>
+    }
+    ```
+
+    Schema da resposta
+    ```
+
+    {
+        msg: <String>
+        portfolio: {
+            "portfolioId": <String>,
+            "foto": <String>,
+            "descricao": <String>,
+            "servico": <String>,
+            "duracao": <String>,
+            "clienteId": <String>,
+            "funcionarioId": <String>
+        }
+        erro: <Boleano>
+    }
+    ```
+
+    * **DELETE /portfolio/portfolioId/{id}**
+
+    Schema da resposta
+    ```
+    {
+        msg: <String>
+        erro: <Boleano>
+    }
