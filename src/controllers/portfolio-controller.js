@@ -14,7 +14,7 @@ const portfolioController = (app, bd)=>{
 
     app.get("/portfolio/portfolioId/:portfolioId", (req, res)=>{
         // Pegando parâmetro que será utilizado para o filtro
-        const portfolioId = req.params.servico;
+        const portfolioId = req.params.portfolioId;
 
         // Pesquisa o usuário no banco de dados
         const portfolioEncontrado = bd.portfolios.filter(portfolio=>(portfolio.portfolioId == portfolioId));
@@ -54,7 +54,7 @@ const portfolioController = (app, bd)=>{
         }
     });
 
-    app.delete("portfolio/portfolioId/:portfolioId", (req, res)=>{
+    app.delete("/portfolio/portfolioId/:portfolioId", (req, res)=>{
         // Pegando parâmetro que será utilizado para o filtro
         const portfolioId = req.params.portfolioId;
 
@@ -69,7 +69,7 @@ const portfolioController = (app, bd)=>{
         });
     });
 
-    app.put("portfolio/portfolioId/:portfolioId", (req, res)=>{
+    app.put("/portfolio/portfolioId/:portfolioId", (req, res)=>{
         // Pegando parâmetro que será utilizado para o filtro
         const portfolioId = req.params.portfolioId;
 
