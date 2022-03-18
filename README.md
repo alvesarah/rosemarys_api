@@ -14,6 +14,7 @@ Esse projeto tem como objetivo criar uma API RESTful de um Estúdio de tatuagem,
 ## Pacotes utilizados
 * [Express](https://www.npmjs.com/package/express) v.4.17.3
 * [Nodemon](https://www.npmjs.com/package/nodemon) v.2.0.15
+* [SQLite](https://www.npmjs.com/package/sqlite3)  v.5.0.0
 
 ## Instalação da Aplicação
 
@@ -46,10 +47,9 @@ npm start
     {
         portfolios: [
             {
-                "portfolioId": <String>,
+                "id": <String>,
                 "foto": <String>,
                 "descricao": <String>,
-                "servico": <String>,
                 "duracao": <String>,
                 "clienteId": <String>,
                 "funcionarioId": <String>
@@ -64,10 +64,9 @@ npm start
     Schema da requisição
     ```
     {
-       "portfolioId": <String>,
+       "id": <String>,
         "foto": <String>,
         "descricao": <String>,
-        "servico": <String>,
         "duracao": <String>,
         "clienteId": <String>,
         "funcionarioId": <String>
@@ -79,10 +78,9 @@ npm start
     {
         msg: <String>
         portfolio: {
-            "portfolioId": <String>,
+            "id": <String>,
             "foto": <String>,
             "descricao": <String>,
-            "servico": <String>,
             "duracao": <String>,
             "clienteId": <String>,
             "funcionarioId": <String>
@@ -91,16 +89,15 @@ npm start
     }
     ```
 
-    * **PUT /portfolio/portfolioId/{id}**
+    * **PUT /portfolio/id/{id}**
     
     Schema da requisição
     ```
 
     {
-        "portfolioId": <String>,
+        "id": <String>,
         "foto": <String>,
         "descricao": <String>,
-        "servico": <String>,
         "duracao": <String>,
         "clienteId": <String>,
         "funcionarioId": <String>
@@ -113,10 +110,9 @@ npm start
     {
         msg: <String>
         portfolio: {
-            "portfolioId": <String>,
+            "id": <String>,
             "foto": <String>,
             "descricao": <String>,
-            "servico": <String>,
             "duracao": <String>,
             "clienteId": <String>,
             "funcionarioId": <String>
@@ -125,7 +121,7 @@ npm start
     }
     ```
 
-    * **DELETE /portfolio/portfolioId/{id}**
+    * **DELETE /portfolio/id/{id}**
 
     Schema da resposta
     ```
