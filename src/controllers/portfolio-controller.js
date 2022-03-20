@@ -1,108 +1,33 @@
 import Portfolio from "../models/Portfolio.js";
 
 const portfolioController = (app, bd)=>{
-    
-    app.get('/portfolio', (req, res)=>{
-        // Buscando informações no banco de dados
-        const todosPortfolios = bd.portfolios;
+    const portfolioModel = new Portfolio(bd);
 
-        //Resposta com o retorno daquilo que eu busquei
-        res.json({
-            "portfolios": todosPortfolios,
-            "erro": false
-        });
+
+    app.get('/portfolio', async (req, res)=>{
+        res.json(await portfolioModel.pegaTodosPortfolios());
     });
 
-    app.get("/portfolio/id/:id", (req, res)=>{
-        // Pegando parâmetro que será utilizado para o filtro
+    app.get("/portfolio/portfolioId/:id", async (req, res)=>{
         const id = req.params.id;
-
-        // Pesquisa o usuário no banco de dados
-        const portfolioEncontrado = bd.portfolios.filter(portfolio=>(portfolio.id == id));
-
-        // Retorna o usuário encontrado
-        res.json({
-            "portfolio": portfolioEncontrado,
-            "erro": false
-        });
+        res.json(await portfolioModel.pegaUmPortfolio(id));
     });
 
-    app.post('/portfolio',(req, res)=>{
-        // Recebe o corpo da requisição
+    app.post('/portfolio', async (req, res)=>{
+        const body = req.body;
+        res.json(await portfolioModel.inserePortfolio(body));
+    });
+
+    app.delete("/portfolio/portfolioId/:id", async (req, res)=>{
+        const id = req.params.id;
+        res.json(await portfolioModel.deletaPortfolio(id));
+    });
+
+    app.put("/portfolio/portfolioId/:id", async (req, res)=>{
+        const id = req.params.id;
         const body = req.body;
 
-        // Como temos validações na nossa model, usamos o try/catch para pegar esse erro e enviar como mensagem para nosso cliente
-        try{
-            //  Cria uma instância de Portfolio com validação de dados a partir do corpo que foi recebido
-            const novoPortfolio = new Portfolio(body.id, body.foto, body.descricao, body.duracao, body.clienteId, body.funcionarioId);
-
-            // Insere a instância do usuário no banco de dados
-            bd.portfolios.push(novoPortfolio);
-
-            // Resposta com o retorno do processo
-            res.json({
-                "msg": `Portfólio ${novoPortfolio.id} inserido com sucesso`,
-                "portfólio": novoPortfolio,
-                "erro": false
-            });
-        }
-        catch (error){
-            // Envia o erro, caso exista
-            res.json({
-               "msg": error.message,
-               "erro": true
-            });
-        }
-    });
-
-    app.delete("/portfolio/id/:id", (req, res)=>{
-        // Pegando parâmetro que será utilizado para o filtro
-        const id = req.params.id;
-
-        // Remove o portfólio do banco de dados
-        const novoDB = bd.portfolios.filter(portfolio=>(portfolio.id !== id));
-        bd.portfolios = novoDB;
-
-        // Resposta com o retorno
-        res.json({
-            "msg": `Portfolio de id ${id} excluído com sucesso`,
-            "erro": false
-        });
-    });
-
-    app.put("/portfolio/id/:id", (req, res)=>{
-        // Pegando parâmetro que será utilizado para o filtro
-        const id = req.params.id;
-
-        // Pegando o corpo da requisição com as informações que serão atualizadas
-        const body = req.body
-
-        try {
-            // Utiliza a classe para validação dos dados recebidos
-            const portfolioAtualizado = new Portfolio(body.id, body.foto, body.descricao, body.duracao, body.clienteId, body.funcionarioId);
-
-            // Atualiza o portfolio no banco de dados
-            bd.portfolios = bd.portfolios.map(portfolio => {
-                if(portfolio.id === id){
-                    return portfolioAtualizado;
-                }
-                return portfolio;
-            });
-
-            // Resposta com o retorno
-            res.json({
-                "msg": `Portfolio de id ${portfolioAtualizado.id} atualizado com sucesso`,
-                "portfolio": portfolioAtualizado,
-                "erro": false
-            });
-        }
-        catch(error){
-            // Envia o erro, caso exista
-            res.json({
-                "msg": error.message,
-                "erro": true
-            });
-        }
+        res.json(await portfolioModel.atualizaPortfolio(id, body));
     });
 }
 
