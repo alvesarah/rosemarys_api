@@ -1,33 +1,85 @@
 import Portfolio from "../models/Portfolio.js";
+import PortfolioDAO from "../DAO/PortfolioDAO.js";
 
 const portfolioController = (app, bd)=>{
-    const portfolioModel = new Portfolio(bd);
+    const portfolioDAO = new PortfolioDAO(bd);
 
-
-    app.get('/portfolio', async (req, res)=>{
-        res.json(await portfolioModel.pegaTodosPortfolios());
+    app.get('/portfolio', (req, res)=>{
+        portfolioDAO.pegaTodosPortfolios()
+        .then((resposta)=>{
+            res.json(resposta);
+        })
+        .catch((erro)=>{
+            res.json(erro);
+        });
     });
 
-    app.get("/portfolio/portfolioId/:id", async (req, res)=>{
+    app.get("/portfolio/portfolioId/:id", (req, res)=>{
         const id = req.params.id;
-        res.json(await portfolioModel.pegaUmPortfolio(id));
+        
+        portfolioDAO.pegaUmPortfolio(id)
+        .then((resposta)=>{
+            res.json(resposta);
+        })
+        .catch((erro)=>{
+            res.json(erro);
+        })
     });
 
-    app.post('/portfolio', async (req, res)=>{
+    app.post('/portfolio', (req, res)=>{
         const body = req.body;
-        res.json(await portfolioModel.inserePortfolio(body));
+
+        try {
+            const novoPortfolio = new Portfolio(body.foto, body.descricao, body.duracao, body.clienteId, body.funcionarioId);
+
+            portfolioDAO.inserePortfolio(novoPortfolio)
+            .then((resposta)=>{
+                res.json(resposta);
+            })
+            .catch((erro)=>{
+                res.json(erro);
+            });
+        }
+        catch(error) {
+            res.json({
+                "msg": error.message,
+                "erro": true
+            });
+        }
     });
 
-    app.delete("/portfolio/portfolioId/:id", async (req, res)=>{
+    app.delete("/portfolio/portfolioId/:id", (req, res)=>{
         const id = req.params.id;
-        res.json(await portfolioModel.deletaPortfolio(id));
+        portfolioDAO.deletaPortifolio(id)
+        .then((resposta)=>{
+            res.json(resposta);
+        })
+        .catch((erro)=>{
+            res.json(erro);
+        })
     });
 
-    app.put("/portfolio/portfolioId/:id", async (req, res)=>{
+    app.put("/portfolio/portfolioId/:id", (req, res)=>{
         const id = req.params.id;
         const body = req.body;
 
-        res.json(await portfolioModel.atualizaPortfolio(id, body));
+        try {
+            const portfolioAtualizado = new Portfolio(body.foto, body.descricao, body.duracao, body.clienteId, body.funcionarioId);
+
+            portfolioDAO.atualizaPortfolio(id, portfolioAtualizado)
+            .then((resposta)=>{
+                res.json(resposta);
+            })
+            .catch((erro)=>{
+                res.json(erro);
+            });
+        }
+        catch(error) {
+            res.json({
+                "msg": error.message,
+                "erro": true
+            });
+        }
     });
 }
 
