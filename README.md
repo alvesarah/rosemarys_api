@@ -45,7 +45,8 @@ npm start
 ```
 
 ## Rotas implementadas
-#### Portfólio
+### Portfólio
+
  * **GET /portfolio**
     Schema da resposta
     ```
@@ -99,7 +100,7 @@ npm start
     Schema da resposta
     ```
     {
-        msg: <String>
+        mensagem: <String>
         portfolio: {
             "id": <String>,
             "foto": <String>,
@@ -131,7 +132,7 @@ npm start
     ```
 
     {
-        msg: <String>
+        mensagem: <String>
         portfolio: {
             "id": <String>,
             "foto": <String>,
@@ -149,6 +150,6 @@ npm start
     Schema da resposta
     ```
     {
-        msg: <String>
+        mensagem: <String>
         erro: <Boleano>
     }

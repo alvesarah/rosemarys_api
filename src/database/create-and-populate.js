@@ -15,7 +15,7 @@ const db = new sqlite3.Database(filePath);
 const PORTFOLIO_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PORTFOLIO" (
     "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "FOTO" VARCHAR(64),
+    "FOTO" TEXT,
     "DESCRICAO" TEXT,
     "DURACAO" INTERGER,
     "CLIENTEID" INTERGER,
@@ -42,7 +42,7 @@ function populaTablePort(){
     });
 }
 
-db.serialize( () => {
+db.serialize(() => {
     criaTablePort();    
     populaTablePort();
 });

@@ -8,15 +8,9 @@ class PortfolioDAO{
         return new Promise((resolve, reject) => {
             this.db.all("SELECT * FROM PORTFOLIO", (error, rows) =>{
                 if(error){
-                    reject({
-                        "mensagem": error.message,
-                        "erro": true
-                    });
+                    reject(error);
                 } else {
-                    resolve({
-                        "portfolios": rows,
-                        "erro": false
-                    });
+                    resolve(rows);
                 }
             });
         });
@@ -28,15 +22,9 @@ class PortfolioDAO{
             id,
             (error, rows) =>{
                 if(error){
-                    reject({
-                        "mensagem": error.message,
-                        "erro": true
-                    });
+                    reject(error);
                 }else{
-                    resolve({
-                        "portfolio": rows,
-                        "erro": false
-                    });
+                    resolve(rows);
                 }
             });
         });
@@ -48,16 +36,9 @@ class PortfolioDAO{
                 novoPortfolio.foto, novoPortfolio.descricao, novoPortfolio.duracao, novoPortfolio.clienteId, novoPortfolio.funcionarioId,
                 (error)=>{
                     if(error){
-                        reject({
-                            "mensagem": error.message,
-                            "erro": true
-                        });
+                        reject(error);
                     }else{
-                        resolve({
-                            "mensagem": `Portfolio ${novoPortfolio.id} inserido com sucesso`,
-                            "portfolio": novoPortfolio,
-                            "erro": false
-                        });
+                        resolve(`Portfolio ${novoPortfolio.descricao} inserido com sucesso`);
                     }
                 }
             );
@@ -70,15 +51,9 @@ class PortfolioDAO{
             id,
             (error)=>{
                 if(error){
-                    reject({
-                        "mensagem": error.message,
-                        "erro": true
-                    });
+                    reject(error);
                 }else{
-                    resolve({
-                        "portfolio": `Portfolio de id ${id} deletado com sucesso`,
-                        "erro": false
-                    });
+                    resolve(`Portfolio de id ${id} deletado com sucesso`);
                 }
             });
         });
@@ -86,24 +61,16 @@ class PortfolioDAO{
 
     atualizaPortfolio = (id, portfolio) => {
         return new Promise((resolve, reject) =>{
-            this.db.run("UPDATE PORTFOLIO SET FOTO = ?, DESCRICAO = ?, DURACAO = ?, CLIENTEID = ?, FUNCIONARIOID = ?", portfolio.foto, portfolio.descricao, portfolio.duracao, portfolio.clienteId, portfolio.funcionarioId,
+            this.db.run("UPDATE PORTFOLIO SET FOTO = ?, DESCRICAO = ?, DURACAO = ?, CLIENTEID = ?, FUNCIONARIOID = ? WHERE ID = ?", portfolio.foto, portfolio.descricao, portfolio.duracao, portfolio.clienteId, portfolio.funcionarioId,
             (error)=>{
                 if(error){
-                    reject({
-                        "mensagem": error.message,
-                        "erro": true
-                    });
+                    reject(error)
                 }else{
-                    resolve({
-                        "mensagem": `Portfolio de id ${id} atualizado com sucesso`,
-                        "portfolio": portfolio,
-                        "erro": false
-                    });
+                    resolve(`Portfolio de id ${id} atualizado com sucesso`);
                 }
             });
         });
     }
-
 }
 
 export default PortfolioDAO;
