@@ -34,6 +34,11 @@ Instalando os pacotes:
 npm install
 ```
 
+Criando banco de dados:
+```
+npm run db
+```
+
 Iniciando o servidor:
 ```
 npm start
