@@ -24,7 +24,7 @@ class Portfolio{
 
     inserePortfolio = async (portfolio)=>{
         try{
-            const novoPortfolio = new PortfolioSchema(portfolio.foto, portfolio.descricao, portfolio.duracao, portfolio.clienteId, portfolio.funcionarioId)
+            const novoPortfolio = new PortfolioSchema(portfolio.foto, portfolio.descricao, portfolio.duracao, portfolio.clienteid, portfolio.funcionarioid)
             return await this.dao.inserePortfolio(novoPortfolio);
         } catch (error) {
             throw error;
@@ -45,7 +45,7 @@ class Portfolio{
         try {
             await this._verificaPortfolio(id);
 
-            const portfolioAtualizado = new PortfolioSchema(portfolio.foto, portfolio.descricao, portfolio.duracao, portfolio.clienteId, portfolio.funcionarioId);
+            const portfolioAtualizado = new PortfolioSchema(portfolio.foto, portfolio.descricao, portfolio.duracao, portfolio.clienteid, portfolio.funcionarioid);
 
             return await this.dao.atualizaPortfolio(id, portfolioAtualizado);
         } catch (error) {

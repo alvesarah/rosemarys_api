@@ -33,7 +33,7 @@ class PortfolioDAO{
     inserePortfolio = (novoPortfolio) => {
         return new Promise((resolve, reject)=>{
             this.db.run("INSERT INTO PORTFOLIO (FOTO, DESCRICAO, DURACAO, CLIENTEID, FUNCIONARIOID) VALUES (?, ?, ?, ?, ?)",
-                novoPortfolio.foto, novoPortfolio.descricao, novoPortfolio.duracao, novoPortfolio.clienteId, novoPortfolio.funcionarioId,
+                novoPortfolio.foto, novoPortfolio.descricao, novoPortfolio.duracao, novoPortfolio.clienteid, novoPortfolio.funcionarioid,
                 (error)=>{
                     if(error){
                         reject(error);
@@ -61,7 +61,7 @@ class PortfolioDAO{
 
     atualizaPortfolio = (id, portfolio) => {
         return new Promise((resolve, reject) =>{
-            this.db.run("UPDATE PORTFOLIO SET FOTO = ?, DESCRICAO = ?, DURACAO = ?, CLIENTEID = ?, FUNCIONARIOID = ? WHERE ID = ?", portfolio.foto, portfolio.descricao, portfolio.duracao, portfolio.clienteId, portfolio.funcionarioId,
+            this.db.run("UPDATE PORTFOLIO SET FOTO = ?, DESCRICAO = ?, DURACAO = ?, CLIENTEID = ?, FUNCIONARIOID = ? WHERE ID = ?", portfolio.foto, portfolio.descricao, portfolio.duracao, portfolio.clienteid, portfolio.funcionarioid, id,
             (error)=>{
                 if(error){
                     reject(error)

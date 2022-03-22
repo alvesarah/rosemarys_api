@@ -4,7 +4,7 @@
   "description": "API do estúdio de tatuagem",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js",
     "db": "node ./src/database/create-and-populate.js"
@@ -32,7 +32,9 @@
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
   },
   "type": "module"
 }

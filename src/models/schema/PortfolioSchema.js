@@ -1,11 +1,10 @@
 class PortfolioSchema{
-    constructor(id, foto, descricao, duracao, clienteId, funcionarioId){
-        this.id = id;
+    constructor(foto, descricao, duracao, clienteid, funcionarioid){
         this.foto = foto;
         this.descricao = descricao;
         this.duracao = duracao;
-        this.clienteId = clienteId;
-        this.funcionarioId = funcionarioId;
+        this.clienteid = clienteid;
+        this.funcionarioid = funcionarioid;
     }
 }
 
