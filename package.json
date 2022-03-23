@@ -36,5 +36,8 @@
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2"
   },
-  "type": "module"
+  "type": "module",
+  "engines": {
+    "node": "16"
+  }
 }

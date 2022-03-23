@@ -16,6 +16,8 @@ class Portfolio{
 
     pegaUmPortfolio = async (id)=>{
         try {
+            await this._verificaPortfolio(id);
+
             return await this.dao.pegaUmPortfolio(id);
         } catch (error) {
             throw error;
