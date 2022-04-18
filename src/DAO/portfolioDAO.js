@@ -30,6 +30,22 @@ class PortfolioDAO{
         });
     }
 
+    pegaPortfolioFuncionarioID = (funcionarioID) => {
+        return new Promise((resolve, reject) => {
+            this.db.all(
+                "SELECT * FROM PORTFOLIO WHERE FUNCIONARIOID = ?",
+                funcionarioID,
+                (error, rows) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(rows);
+                    }
+                }
+            );
+        });
+    };
+
     inserePortfolio = (novoPortfolio) => {
         return new Promise((resolve, reject)=>{
             this.db.run("INSERT INTO PORTFOLIO (FOTO, DESCRICAO, DURACAO, CLIENTEID, FUNCIONARIOID) VALUES (?, ?, ?, ?, ?)",

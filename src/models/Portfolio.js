@@ -24,6 +24,14 @@ class Portfolio{
         }
     }
 
+    pegaPortfolioFuncionarioID = async (funcionarioId) => {
+        try {
+            return await this.dao.pegaPortfolioFuncionarioID(funcionarioId);
+        } catch (error) {
+            throw error;
+        }
+    }
+
     inserePortfolio = async (portfolio)=>{
         try{
             const novoPortfolio = new PortfolioSchema(portfolio.foto, portfolio.descricao, portfolio.duracao, portfolio.clienteid, portfolio.funcionarioid)

@@ -41,6 +41,24 @@ const portfolioController = (app, bd)=>{
         }
     });
 
+    app.get("/portfolio/funcionarioId/:funcionarioId", async (req, res) => {
+        const funcionarioId = req.params.funcionarioId;
+        try {
+            const resposta = await portfolioModel.pegaPortfolioFuncionarioID(
+            funcionarioId
+            );
+            res.status(200).json({
+            portfolio: resposta,
+            erro: false,
+            });
+        } catch (error) {
+            res.status(400).json({
+            mensagem: error.message,
+            erro: true,
+            });
+        }
+    });
+
     app.post('/portfolio', async (req, res)=>{
         const body = req.body;
         try{
