@@ -2,13 +2,15 @@ import express from "express";
 
 import portfolioController from "./controllers/portfolio-controller.js";
 
-import generalMiddleware from "./middleware/general-middleware.js";
-
 import database from "./database/sqlite-db.js";
+
+import cors from "cors";
 
 const app = express()
 
 app.use(express.json());
+
+app.use(cors());
 
 generalMiddleware(app);
 
